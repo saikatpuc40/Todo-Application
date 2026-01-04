@@ -13,6 +13,17 @@ class Test extends StatelessWidget {
           Icon(Icons.more_vert),
         ],
       ),
+
+      body: ElevatedButton(
+          onPressed: (){},
+          child:Text("Click Me")
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        child: Icon(Icons.add),
+      ),
+
+
     );
   }
 }
