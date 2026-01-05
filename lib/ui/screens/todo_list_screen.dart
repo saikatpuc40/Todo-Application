@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:todo_application/ui/screens/add_new_todo_screen.dart';
+import 'package:todo_application/ui/widgets/todo_item.dart';
+
+import '../../entities/todo.dart';
 
 class TodoListScreen extends StatefulWidget {
   const TodoListScreen({super.key});
@@ -8,6 +12,7 @@ class TodoListScreen extends StatefulWidget {
 }
 
 class _TodoListScreenState extends State<TodoListScreen> {
+  List<Todo> _todoList=[];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,48 +22,19 @@ class _TodoListScreenState extends State<TodoListScreen> {
       body: ListView.builder(
           itemCount: 5,
           itemBuilder: (context, index) {
-            return TodoItem();
+            return TodoItem(todo: Todo("Title will be here", "Sub Title", DateTime.now(),false),
+                    onIconButtonPressed: (){},);
           }),
-    );
-  }
-}
-
-class TodoItem extends StatelessWidget {
-  const TodoItem({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        title: Text("Title",style: TextStyle(
-          decoration: _getTextDecoration(false),
-        ),),
-        subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Sub Title"),
-            Text("Time"),
-          ],
-        ),
-        leading: Icon(Icons.person),
-        trailing: _buildRoundedIconButton()
+      floatingActionButton: FloatingActionButton.extended(
+          tooltip: "Add New Todo",
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>addNewTodoScreen()));
+          },
+          icon: Icon(Icons.add), 
+          label: Text("Add"),
       ),
     );
   }
-
-  Widget _buildRoundedIconButton(){
-    return CircleAvatar(
-      child: Icon(_getIcon(false)) ,
-    );
-  }
-
-  IconData _getIcon(bool isDone){
-    return isDone ? Icons.check : Icons.close;
-  }
-
-  TextDecoration? _getTextDecoration(bool isDone){
-    return isDone ? TextDecoration.lineThrough : null;
-  }
 }
+
+
