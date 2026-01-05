@@ -9,6 +9,20 @@ class TodoApplication extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: TodoListScreen(),
+      theme: _lightTheme(),
+    );
+  }
+
+  ThemeData _lightTheme() {
+    return ThemeData(
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white,
+            fixedSize: Size.fromWidth(double.maxFinite),
+            padding: EdgeInsets.symmetric(vertical: 12)
+        )
+      )
     );
   }
 }

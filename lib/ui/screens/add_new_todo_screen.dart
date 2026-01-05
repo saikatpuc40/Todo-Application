@@ -38,9 +38,12 @@ class _addNewTodoScreenState extends State<addNewTodoScreen> {
                 hint: Text("Write a Description"),
                 label: Text("Description")
               ),
+            ),
+            const SizedBox(height: 16,),
+            ElevatedButton(
+                onPressed: (){},
+                child: Text("ADD")
             )
-
-
           ],
         ),
       ),
