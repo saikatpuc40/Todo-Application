@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_application/ui/screens/todo_list_screen.dart';
+import 'package:todo_application/ui/screens/todo_list/todo_list_screen.dart';
 
 class TodoApplication extends StatelessWidget {
   const TodoApplication({super.key});
