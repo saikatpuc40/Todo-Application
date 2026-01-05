@@ -25,7 +25,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
             return TodoItem(todo: Todo("Title will be here", "Sub Title", DateTime.now(),false),
                     onIconButtonPressed: (){},);
           }),
-      floatingActionButton: FloatingActionButton.extended(
+          floatingActionButton: FloatingActionButton.extended(
           tooltip: "Add New Todo",
           onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context)=>addNewTodoScreen()));

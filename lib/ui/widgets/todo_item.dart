@@ -15,6 +15,8 @@ class TodoItem extends StatelessWidget {
     return Card(
       elevation: 3,
       margin: const EdgeInsets.symmetric(horizontal: 16,vertical: 4),
+      surfaceTintColor: _getCardTinColor(todo.isDone),
+      color: _getCardBGColor(todo.isDone),
       child: ListTile(
           title: Text(todo.title,style: TextStyle(
             decoration: _getTextDecoration(todo.isDone),
@@ -49,5 +51,13 @@ class TodoItem extends StatelessWidget {
 
   TextDecoration? _getTextDecoration(bool isDone){
     return isDone ? TextDecoration.lineThrough : null;
+  }
+
+  Color? _getCardTinColor(bool isDone){
+    return isDone ? Colors.green : null;
+  }
+
+  Color? _getCardBGColor(bool isDone){
+    return isDone ? Colors.green.shade100 : null;
   }
 }
