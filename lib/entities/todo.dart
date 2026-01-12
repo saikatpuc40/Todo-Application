@@ -4,5 +4,5 @@ class Todo{
   DateTime time;
   bool isDone;
 
-  Todo(this.title, this.description, this.time, this.isDone);
+  Todo(this.title, this.description, this.time, [this.isDone = false]);
 }

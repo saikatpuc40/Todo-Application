@@ -3,7 +3,6 @@ import 'package:todo_application/ui/screens/add_new_todo_screen.dart';
 import 'package:todo_application/ui/screens/todo_list/all_todo_list_tab.dart';
 import 'package:todo_application/ui/screens/todo_list/done_todo_list_tab.dart';
 import 'package:todo_application/ui/screens/todo_list/undone_todo_list_tab.dart';
-
 import '../../../entities/todo.dart';
 
 class TodoListScreen extends StatefulWidget {
@@ -34,7 +33,13 @@ class _TodoListScreenState extends State<TodoListScreen> with SingleTickerProvid
       body: TabBarView(
           controller: _tabController,
           children: [
-            AllTodoListTab(),
+            AllTodoListTab( onDelete: (int index) {
+              _deleteTodo(index);
+              }, onStatusChange: (int index) {
+              _toggleTodoStatus(index);
+              },
+              todoList: _todoList,
+            ),
             UndoneTodoListTab(),
             DoneTodoListTab(),
           ]
@@ -47,7 +52,7 @@ class _TodoListScreenState extends State<TodoListScreen> with SingleTickerProvid
     return FloatingActionButton.extended(
         tooltip: "Add New Todo",
         onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>addNewTodoScreen()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>addNewTodoScreen(onAddTodo: _addNewTodo)));
         },
         icon: Icon(Icons.add),
         label: Text("Add"),
@@ -63,6 +68,28 @@ class _TodoListScreenState extends State<TodoListScreen> with SingleTickerProvid
             Tab(text: "done",)
           ]
       );
+  }
+
+
+  void _addNewTodo(Todo todo){
+    _todoList.add(todo);
+    if(mounted){
+      setState(() {});
+    }
+  }
+
+  void _deleteTodo(int index){
+    _todoList.removeAt(index);
+      if(mounted) {
+        setState(() {});
+      }
+  }
+
+  void _toggleTodoStatus(int index){
+    _todoList[index].isDone = !_todoList[index].isDone;
+    if(mounted){
+      setState(() {});
+    }
   }
 }
 
