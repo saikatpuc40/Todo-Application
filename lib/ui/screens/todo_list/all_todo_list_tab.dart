@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../entities/todo.dart';
+import '../../widgets/empty_list_widget.dart';
 import '../../widgets/todo_item.dart';
+
 
 class AllTodoListTab extends StatelessWidget {
   const AllTodoListTab(
@@ -17,9 +19,13 @@ class AllTodoListTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if(todoList.isEmpty){
+      return const EmptyListWidget();
+    }
     return  ListView.builder(
         itemCount: todoList.length,
         itemBuilder: (context, index) {
+
           return Dismissible(
             key: UniqueKey(),
             onDismissed: (_){

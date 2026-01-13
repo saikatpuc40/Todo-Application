@@ -40,8 +40,22 @@ class _TodoListScreenState extends State<TodoListScreen> with SingleTickerProvid
               },
               todoList: _todoList,
             ),
-            UndoneTodoListTab(),
-            DoneTodoListTab(),
+            UndoneTodoListTab(
+              onDelete: (int index) {
+                _deleteTodo(index);
+              }, onStatusChange: (int index) {
+              _toggleTodoStatus(index);
+            },
+              todoList: _todoList.where((item)=> item.isDone == false).toList(),
+            ),
+            DoneTodoListTab(
+              onDelete: (int index) {
+                _deleteTodo(index);
+              }, onStatusChange: (int index) {
+              _toggleTodoStatus(index);
+            },
+              todoList: _todoList.where((item)=> item.isDone == true).toList(),
+            ),
           ]
       ),
       floatingActionButton: _buildAddTodoFAB(),

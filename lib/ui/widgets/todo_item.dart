@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../entities/todo.dart';
 
@@ -27,7 +28,7 @@ class TodoItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(todo.description),
-              Text(todo.time.toString()),
+              Text(DateFormat.yMEd().add_jms().format(todo.time)),
             ],
           ),
           leading: Icon(Icons.person),
