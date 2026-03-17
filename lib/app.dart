@@ -8,6 +8,7 @@ class TodoApplication extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: TodoListScreen(),
+      debugShowCheckedModeBanner: false,
       theme: _lightTheme(),
     );
   }
